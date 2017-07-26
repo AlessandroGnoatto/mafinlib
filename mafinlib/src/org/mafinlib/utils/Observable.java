@@ -8,11 +8,9 @@ import java.util.List;
 public interface Observable {
 
   /**
-   * Attaches a observer to the Observable. After attachment the observer gets
-   * informed about changes in the Observable.
+   * Adds an observer to the Observable.
    * 
    * @param observer
-   *            The observer to attach to the observable
    */
   public void addObserver(final Observer observer);
 
@@ -36,20 +34,15 @@ public interface Observable {
 
 
   /**
-   * Detaches a previously attached observer to the observable. After
-   * detachment the observer does no longer receive change notifications from
-   * the observable.
+   * Detaches a previously attached observer to the observable.
    * 
    * @param observer
-   *            The observer to detach from the observable
    */
   public void deleteObserver(final Observer observer);
 
 
   /**
-   * Detaches all previously attached observer to the observable. After
-   * detachment observers do not longer receive change notifications from
-   * the observable.
+   * Detaches all previously attached observer to the observable.
    */
   public void deleteObservers();
 
