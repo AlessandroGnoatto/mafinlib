@@ -6,7 +6,7 @@ package org.mafinlib.utils;
  * 
  * @author Alessandro Gnoatto
  */
-public interface Observer {
+public interface ObserverInterface {
   
   public void update();
 
