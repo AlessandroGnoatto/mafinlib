@@ -35,7 +35,7 @@ public class Handle<T extends Observable> {
 		this(h,true);
 	}
 	
-	public Handle(T h, boolean registerAsObserver){
+	public Handle(final T h, final boolean registerAsObserver){
 		link = new Link(h, registerAsObserver);
 	}
 	
