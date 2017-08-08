@@ -2,7 +2,7 @@ package org.mafinlib.patterns;
 
 /**
  * This is a Java port of LazyObject from Quantlib. The logic of the class is best described in the book by L. Ballabio 
- * "Implementing Quantlib"
+ * "Implementing Quantlib"  @see <a href="https://leanpub.com/implementingquantlib/">https://leanpub.com/implementingquantlib/</a>
  * 
  * This class provides an abstract framework for calculation on demand and result caching.
  * 
