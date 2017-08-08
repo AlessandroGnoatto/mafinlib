@@ -1,6 +1,6 @@
 package org.mafinlib;
 
-import org.mafinlib.utils.ObservableInterface;
+import org.mafinlib.patterns.ObservableInterface;
 
 /**
  * This is purely virtual base class for market observables

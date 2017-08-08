@@ -1,6 +1,6 @@
 package org.mafinlib;
 
-import org.mafinlib.utils.Observable;
+import org.mafinlib.patterns.Observable;
 
 /**
  * An instance of this class can be relinked so that it points to another observable.

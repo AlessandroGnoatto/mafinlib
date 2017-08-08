@@ -1,4 +1,4 @@
-package org.mafinlib.utils;
+package org.mafinlib.patterns;
 
 /**
  * An observer will be in the present setting a financial product

@@ -1,4 +1,4 @@
-package org.mafinlib.utils;
+package org.mafinlib.patterns;
 
 import java.util.Collections;
 import java.util.Iterator;

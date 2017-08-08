@@ -1,8 +1,8 @@
 package org.mafinlib;
 
 
-import org.mafinlib.utils.Observable;
-import org.mafinlib.utils.ObserverInterface;
+import org.mafinlib.patterns.Observable;
+import org.mafinlib.patterns.ObserverInterface;
 
 /**
  * Class representing a shared handle to an observable.
