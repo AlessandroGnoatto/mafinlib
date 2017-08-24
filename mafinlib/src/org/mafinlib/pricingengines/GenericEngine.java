@@ -1,5 +1,11 @@
 package org.mafinlib.pricingengines;
 
+import java.util.List;
+
+import org.mafinlib.patterns.Observable;
+import org.mafinlib.patterns.ObservableInterface;
+import org.mafinlib.patterns.ObserverInterface;
+
 /**
  * This class provides a partial implementation of Generic Engine.
  * The implementation of calculate from <i><b>PricingEngineInterface</b></i> is left abstract
@@ -53,4 +59,42 @@ public abstract class GenericEngine <A extends PricingEngineInterface.Arguments,
 	@Override
 	public abstract void calculate();
 	
+	
+	private final ObservableInterface myObservable = new Observable(this);
+	
+	@Override
+	public synchronized void addObserver(final ObserverInterface observer) {
+		myObservable.addObserver(observer);
+	}
+	
+	@Override
+	public int countObservers() {
+		return myObservable.countObservers();
+	}
+
+	
+	@Override
+	public List<ObserverInterface> getObservers() {
+		return myObservable.getObservers();
+	}
+	
+	@Override
+	public synchronized void deleteObserver(final ObserverInterface observer){
+		myObservable.deleteObserver(observer);
+	}
+	
+	@Override
+	public synchronized void deleteObservers() {
+		myObservable.deleteObservers();
+	}
+	
+	@Override
+	public void notifyObservers(){
+		myObservable.notifyObservers();
+	}
+	
+	@Override
+	public void notifyObservers(final Object arg) {
+		myObservable.notifyObservers(arg);
+	}
 }

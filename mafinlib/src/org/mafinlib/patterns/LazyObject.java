@@ -1,5 +1,7 @@
 package org.mafinlib.patterns;
 
+import java.util.List;
+
 /**
  * This is a Java port of LazyObject from Quantlib. The logic of the class is best described in the book by L. Ballabio 
  * "Implementing Quantlib"  @see <a href="https://leanpub.com/implementingquantlib/">https://leanpub.com/implementingquantlib/</a>
@@ -129,5 +131,44 @@ public abstract class LazyObject implements ObserverInterface, ObservableInterfa
 	 * @throws ArithmeticException
 	 */
 	protected abstract void performCalculations() throws ArithmeticException;
+	
+	
+	private final ObservableInterface myObservable = new Observable(this);
+	
+	@Override
+	public synchronized void addObserver(final ObserverInterface observer) {
+		myObservable.addObserver(observer);
+	}
+	
+	@Override
+	public int countObservers() {
+		return myObservable.countObservers();
+	}
+
+	
+	@Override
+	public List<ObserverInterface> getObservers() {
+		return myObservable.getObservers();
+	}
+	
+	@Override
+	public synchronized void deleteObserver(final ObserverInterface observer){
+		myObservable.deleteObserver(observer);
+	}
+	
+	@Override
+	public synchronized void deleteObservers() {
+		myObservable.deleteObservers();
+	}
+	
+	@Override
+	public void notifyObservers(){
+		myObservable.notifyObservers();
+	}
+	
+	@Override
+	public void notifyObservers(final Object arg) {
+		myObservable.notifyObservers(arg);
+	}
 	
 }

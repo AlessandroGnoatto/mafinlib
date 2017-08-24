@@ -79,7 +79,7 @@ public class Observable implements ObservableInterface {
 	 * while "this" thread notifies observers. 
 	 */
 	@Override
-	public void notifyObservers(Object arg) {
+	public void notifyObservers(final Object arg) {
 		List<ObserverInterface> copyOfObservers;
 
 		synchronized(this) {

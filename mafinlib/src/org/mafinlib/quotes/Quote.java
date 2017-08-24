@@ -50,6 +50,7 @@ public abstract class Quote implements ObservableInterface {
 	public synchronized void deleteObserver(final ObserverInterface observer){
 		myObservable.deleteObserver(observer);
 	}
+	
 	@Override
 	public synchronized void deleteObservers() {
 		myObservable.deleteObservers();
@@ -58,6 +59,11 @@ public abstract class Quote implements ObservableInterface {
 	@Override
 	public void notifyObservers(){
 		myObservable.notifyObservers();
+	}
+	
+	@Override
+	public void notifyObservers(final Object arg) {
+		myObservable.notifyObservers(arg);
 	}
 
 }
