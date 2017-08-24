@@ -10,9 +10,9 @@
  * 
  */
 package org.mafinlib;
-import java.util.logging.LogManager;
 
-//import org.slf4j.Logger;
+
+import org.apache.log4j.Logger;
 
 /**
  * 
@@ -21,9 +21,9 @@ import java.util.logging.LogManager;
  */
 public class MaFinLib {
 	
-	static LogManager logger;
+	static Logger logger;
 	
-    public final static void setLogger(final LogManager logger) {
+    public final static void setLogger(final Logger logger) {
         MaFinLib.logger = logger;
     }
 }
