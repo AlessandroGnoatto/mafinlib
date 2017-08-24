@@ -1,7 +1,8 @@
 package org.mafinlib.math;
 
 /**
- * Just a list of Mathematical constants. See ql/mathconstants.hpp
+ * Just a list of Mathematical constants. 
+ * See ql/mathconstants.hpp 
  * 
  * 
  * @author Alessandro Gnoatto
