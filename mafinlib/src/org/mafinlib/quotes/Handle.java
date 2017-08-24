@@ -1,4 +1,4 @@
-package org.mafinlib;
+package org.mafinlib.quotes;
 
 
 import org.mafinlib.patterns.Observable;

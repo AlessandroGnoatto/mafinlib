@@ -23,9 +23,9 @@ import java.util.List;
 public class Observable implements ObservableInterface {
 
 	private final List<ObserverInterface> observers;
-	private final Observable observable;
+	private final ObservableInterface observable;
 	
-	public Observable(final Observable observable) {
+	public Observable(final ObservableInterface observable) {
 		this.observers = new LinkedList<ObserverInterface>();
 		this.observable = observable;
 	}
