@@ -9,16 +9,24 @@
  * When applicable, the original copyright notice of the libraries above follows this notice.
  * 
  */
-package org.mafinlib.patterns;
+package org.mafinlib.cashflow;
+
+import java.util.Date;
+
+import org.mafinlib.patterns.ObservableInterface;
+import org.mafinlib.patterns.PolymorphicVisitableInterface;
 
 /**
- * An observer will be in the present setting a financial product
- * whose value depends on market data (the observables)
  * 
  * @author Alessandro Gnoatto
+ *
  */
-public interface ObserverInterface {
-  
-  public void update();
+public abstract class Event implements ObservableInterface, PolymorphicVisitableInterface{
+	
+    protected Event() {
+   
+    }
+	
+	public abstract Date date();
 
 }

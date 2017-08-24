@@ -9,16 +9,21 @@
  * When applicable, the original copyright notice of the libraries above follows this notice.
  * 
  */
-package org.mafinlib.patterns;
+package org.mafinlib;
+import java.util.logging.LogManager;
+
+//import org.slf4j.Logger;
 
 /**
- * An observer will be in the present setting a financial product
- * whose value depends on market data (the observables)
  * 
  * @author Alessandro Gnoatto
+ *
  */
-public interface ObserverInterface {
-  
-  public void update();
-
+public class MaFinLib {
+	
+	static LogManager logger;
+	
+    public final static void setLogger(final LogManager logger) {
+        MaFinLib.logger = logger;
+    }
 }
