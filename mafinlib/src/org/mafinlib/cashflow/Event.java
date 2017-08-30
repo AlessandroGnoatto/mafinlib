@@ -22,13 +22,14 @@ import org.mafinlib.patterns.PolymorphicVisitorInterface;
 import org.mafinlib.patterns.VisitorInterface;
 import org.mafinlib.time.Date;
 /**
+ * Abstract Event class. Return the date at which the 
  * 
  * @author Alessandro Gnoatto
  *
  */
 public abstract class Event implements ObservableInterface, PolymorphicVisitableInterface{
 	
-    protected Event() {
+    public Event() {
    
     }
 	
@@ -47,7 +48,7 @@ public abstract class Event implements ObservableInterface, PolymorphicVisitable
 	 * @param includeRefDate
 	 * @return true if the event has already occured.
 	 */
-	public boolean hasOccurred(final Date date, final boolean includeRefDate){
+	public boolean hasOccurred(Date date, boolean includeRefDate){
 		if(includeRefDate){
 			return date().compareTo(date) < 0;
 		}else{
