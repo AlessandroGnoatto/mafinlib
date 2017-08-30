@@ -22,7 +22,9 @@ import org.mafinlib.patterns.PolymorphicVisitorInterface;
 import org.mafinlib.patterns.VisitorInterface;
 import org.mafinlib.time.Date;
 /**
- * Abstract Event class. Return the date at which the 
+ * Abstract Event class.
+ * Return the date at which the event occurs.
+ * Tells if an event has occured or not.
  * 
  * @author Alessandro Gnoatto
  *
