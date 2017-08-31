@@ -262,6 +262,9 @@ public class Period implements Cloneable{
                     this.units = TimeUnit.Days;
                     this.length *= 7;
                     break;
+                default:
+                	;
+                    
             }
 
         if (this.length % scalar == 0)

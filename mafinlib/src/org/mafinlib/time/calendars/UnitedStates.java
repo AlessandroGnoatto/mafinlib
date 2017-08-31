@@ -133,7 +133,7 @@ public class UnitedStates extends Calendar{
         }
     }
     
-    boolean isWashingtonBirthday(int d, Month m, int y, Weekday w) { 
+    private boolean isWashingtonBirthday(int d, Month m, int y, Weekday w) { 
     	if (y >= 1971) {
     		// third Monday in February 
     		return (d >= 15 && d <= 21) && w == Weekday.Monday && m == Month.February;
@@ -143,7 +143,7 @@ public class UnitedStates extends Calendar{
     	}
     }
     
-    boolean isMemorialDay(int d, Month m, int y, Weekday w) {
+    private boolean isMemorialDay(int d, Month m, int y, Weekday w) {
     	if (y >= 1971) {
     		// last Monday in May
     		return d >= 25 && w == Weekday.Monday && m == Month.May;
@@ -153,17 +153,17 @@ public class UnitedStates extends Calendar{
     	}
     }
     
-    boolean isLaborDay(int d, Month m, int y, Weekday w) {
+    private boolean isLaborDay(int d, Month m, int y, Weekday w) {
     	// first Monday in September 
     	return d <= 7 && w == Weekday.Monday && m == Month.September; 
     }
     
-    boolean isColumbusDay(int d, Month m, int y, Weekday w){
+    private boolean isColumbusDay(int d, Month m, int y, Weekday w){
     	// second Monday in October
     	return (d >= 8 && d <= 14) && w == Weekday.Monday && m == Month.October  && y >= 1971; 
     }
     
-    boolean isVeteransDay(int d, Month m, int y, Weekday w){
+    private boolean isVeteransDay(int d, Month m, int y, Weekday w){
     	if (y <= 1970 || y >= 1978) {
     		// November 11th, adjusted 
     		return (d == 11 || (d == 12 && w == Weekday.Monday) || (d == 10 && w == Weekday.Friday)) && m == Month.November;
