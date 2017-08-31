@@ -27,7 +27,7 @@ public class MFL {
      * <p>
      * @param condition is a condition to be verified
      * @param message is a message emitted.
-     * @throws a LibraryException if the condition is not met
+     * @throws LibraryException if the condition is not met
      */
     public static void require(
             final boolean condition,
@@ -42,7 +42,7 @@ public class MFL {
      * <p>
      * @param condition is a condition to be verified
      * @param message is a message emitted.
-     * @throws a LibraryException if the condition is not met
+     * @throws LibraryException if the condition is not met
      */
     public static void require(
             final boolean condition,
