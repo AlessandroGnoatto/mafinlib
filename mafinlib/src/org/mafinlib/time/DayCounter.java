@@ -14,6 +14,10 @@ package org.mafinlib.time;
 import org.mafinlib.MFL;
 
 /**
+ * In case of the ActualActual::ISMA convention the year fraction depends on the reference period also.
+ * 
+ * This is why the most general implementation of yearFraction requires 4 input dates. In most cases
+ * the last two inputs will be null.
  * 
  * @author Alessandro Gnoatto
  *
