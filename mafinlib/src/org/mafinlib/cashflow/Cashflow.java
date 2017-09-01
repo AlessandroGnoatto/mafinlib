@@ -56,7 +56,8 @@ public abstract class Cashflow extends Event implements Comparable<Cashflow>{
 		if (ecd.eq(new Date())){
 			return false;
 		}
-		Date ref = !(refDate.eq(new Date())) ? refDate : new Settings().evaluationDate();
+		
+		Date ref = !(refDate.eq(new Date())) ? refDate : Settings.instance().evaluationDate();
 		return ecd.le(ref);
 	}
 	
@@ -74,9 +75,9 @@ public abstract class Cashflow extends Event implements Comparable<Cashflow>{
 				return true;
 		}
 		
-		if(refDate.eq(new Date()) || refDate.eq(new Settings().evaluationDate())){
+		if(refDate.eq(new Date()) || refDate.eq(Settings.instance().evaluationDate())){
 			//today's date; we override the bool with the one specified in the settings (if any)
-			boolean includeToday = new Settings().todaysCashflows();
+			boolean includeToday = Settings.instance().includeTodaysCashFlows();
 			
 			if(includeToday)
 				includeRefDate = includeToday;

@@ -1,4 +1,4 @@
-AAbout MafinLib
+About MafinLib
 ==========
 
 
