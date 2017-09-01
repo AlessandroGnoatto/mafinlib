@@ -11,6 +11,7 @@
  */
 package org.mafinlib.patterns;
 
+
 public class SingletonTest {
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException{
@@ -41,6 +42,7 @@ public class SingletonTest {
 		isEqual = firstInstance == secondInstance;
 		System.out.println("The memory address is the same");
 		System.out.println(isEqual);
+		
 	}
 	
 	
