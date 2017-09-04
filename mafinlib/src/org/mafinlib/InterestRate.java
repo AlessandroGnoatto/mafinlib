@@ -206,7 +206,142 @@ public class InterestRate {
 		
 	}
 	
+	/**
+	 * 
+	 * @param c
+	 * @param time
+	 * @param resultDC
+	 * @param comp
+	 * @param freq
+	 * @return
+	 */
+	static public InterestRate impliedRate(double compound,
+										   final DayCounter resultDC,
+										   Compounding comp,
+										   Frequency freq,
+										   final Date d1,
+										   final Date d2,
+										   final Date refStart,
+										   final Date refEnd) {
+		
+		MFL.require(d2.ge(d1), d1 + "later than " +d2);
+		
+		double t = resultDC.yearFraction(d1, d2, refStart, refEnd);
+		
+		return impliedRate(compound, resultDC, comp, freq , t);
+	}
+
+	/**
+	 * 
+	 * @param c
+	 * @param time
+	 * @param resultDC
+	 * @param comp
+	 * @param freq
+	 * @return
+	 */
+	static public InterestRate impliedRate(double compound,
+										   final DayCounter resultDC,
+										   Compounding comp,
+										   Frequency freq,
+										   final Date d1,
+										   final Date d2) {
+		
+		MFL.require(d2.ge(d1), d1 + "later than " +d2);
+		
+		double t = resultDC.yearFraction(d1, d2, new Date(), new Date());
+		
+		return impliedRate(compound, resultDC, comp, freq , t);
+	}
+
+	static public InterestRate impliedRate(double compound,
+										   final DayCounter resultDC,
+										   Compounding comp,
+										   Frequency freq,
+										   double t){
+		
+		final double f = freq.toInteger();
+		MFL.require(compound > 0, "positive compound factor required");
+		
+		double r;
+		
+		if(compound == 1.0){
+			MFL.require(t >= 0, "non negative time t required");
+			r = 0.0;
+		}else{
+			MFL.require(t > 0.0, "positive time required");
+			
+			switch(comp){
+				case Simple:
+					r = (compound - 1.0)/t;
+					break;
+				case Compounded:
+					r = (Math.pow(compound, 1 / (f * t) - 1.0) - 1)*(f);
+					break;
+				case Continuous:
+					r = Math.log(compound) / t;
+					break;
+				case SimpleThenCompounded:
+					if(t <= 1.0 / f){
+						r = (compound - 1.0)/t;
+					}else{
+						r = (Math.pow(compound, 1 / (f * t) - 1.0) - 1)*(f);
+					}
+					break;
+				case CompoundedThenSimple:
+					if(t > 1.0 / f){
+						r = (compound - 1.0)/t;
+					}else{
+						r = (Math.pow(compound, 1 / (f * t) - 1.0) - 1)*(f);
+					}
+					break;
+				default:
+					throw new LibraryException("unknown compounding convention");
+				
+			}
+			
+		}
+				
+		return new InterestRate(r, resultDC,comp,freq);
+	}
 	
+	
+	public final InterestRate equivalentRate(Compounding comp,
+											 Frequency freq,
+											 double t){
+		
+		return impliedRate(compoundFactor(t),this.dc,comp,freq,t);
+	}
+	
+	public final InterestRate equivalentRate(final DayCounter resultDC,
+											 Compounding compound,
+											 Frequency freq,
+											 Date d1,
+											 Date d2,
+											 final Date refStart,
+											 final Date refEnd){
+		
+		MFL.require(d2.ge(d1), d1 + "later than " +d2);
+		
+		double t1 = dc.yearFraction(d1,  d2, refStart, refEnd);
+		double t2 = resultDC.yearFraction(d1, d2, refStart, refEnd);
+		
+		return impliedRate(compoundFactor(t1), resultDC, comp, freq, t2);
+	}
+	
+	public final InterestRate equivalentRate(final DayCounter resultDC,
+											 Compounding compound,
+											 Frequency freq,
+											 Date d1,
+											 Date d2){
+
+		MFL.require(d2.ge(d1), d1 + "later than " +d2);
+
+		double t1 = dc.yearFraction(d1,  d2, new Date(), new Date());
+		double t2 = resultDC.yearFraction(d1, d2, new Date(), new Date());
+
+		return impliedRate(compoundFactor(t1), resultDC, comp, freq, t2);
+	}	
 
 
 	/**
