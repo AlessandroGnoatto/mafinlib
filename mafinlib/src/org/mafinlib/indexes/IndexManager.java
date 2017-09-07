@@ -13,7 +13,7 @@ public class IndexManager {
     private static volatile IndexManager instance;
 
     private IndexManager(){
-    	this.data = new ConcurrentHashMap<String, TimeSeries<Double>>();
+    	data = new ConcurrentHashMap<String, TimeSeries<Double>>();
     }
     
     public static IndexManager getInstance() {
