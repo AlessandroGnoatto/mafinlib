@@ -1,9 +1,25 @@
+/* Copyright (C) 2017 Alessandro Gnoatto
+ * 
+ * MaFinLib extends/is based on/combines features/designs/code excerpts from
+ * 
+ * Quantlib https://github.com/lballabio/QuantLib
+ * JQuantlib a port of Quantlib to Java: https://github.com/frgomes/jquantlib
+ * Finmath https://github.com/finmath/finmath-lib
+ * 
+ * When applicable, the original copyright notice of the libraries above follows this notice.
+ * 
+ */
 package org.mafinlib.cashflow;
 
 import org.mafinlib.patterns.PolymorphicVisitorInterface;
 import org.mafinlib.patterns.VisitorInterface;
 import org.mafinlib.time.Date;
 
+/**
+ * 
+ * @author Alessandro Gnoatto
+ *
+ */
 public class SimpleCashflow extends Cashflow{
 	
 	private double amount;

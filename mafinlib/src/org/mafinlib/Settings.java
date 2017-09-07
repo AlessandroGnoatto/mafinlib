@@ -129,7 +129,7 @@ public class Settings {
     
     
 	//Begin thread safe Singleton pattern implementation
-	private static Settings instance = null;
+	private static volatile Settings instance = null;
 
     
 	private Settings(){
@@ -139,7 +139,11 @@ public class Settings {
 	
 	public static synchronized Settings instance(){
 		if(instance == null){
-			instance = new Settings();
+			synchronized(Settings.class){
+				if (instance == null) {
+					instance = new Settings();
+				}
+			}
 		}
 		return instance;
 	}

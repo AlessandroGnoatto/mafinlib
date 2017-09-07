@@ -12,7 +12,7 @@
 package org.mafinlib.time.daycounters;
 
 import org.mafinlib.MFL;
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 import org.mafinlib.time.Date;
 import org.mafinlib.time.DayCounter;
 import org.mafinlib.time.Month;

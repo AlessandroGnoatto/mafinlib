@@ -16,7 +16,7 @@ import java.util.Formatter;
 import java.util.Locale;
 
 import org.mafinlib.MFL;
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 
 
 public class Period implements Cloneable{

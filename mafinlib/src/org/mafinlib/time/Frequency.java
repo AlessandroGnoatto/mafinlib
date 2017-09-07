@@ -11,7 +11,7 @@
  */
 package org.mafinlib.time;
 
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 
 public enum Frequency {
     /** null frequency */		        NoFrequency      (-1),

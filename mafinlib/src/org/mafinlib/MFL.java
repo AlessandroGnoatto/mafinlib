@@ -14,7 +14,7 @@ package org.mafinlib;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 
 /**
  * 

@@ -18,7 +18,7 @@ import java.util.Set;
 
 
 import org.mafinlib.MFL;
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 
 public class Calendar {
 

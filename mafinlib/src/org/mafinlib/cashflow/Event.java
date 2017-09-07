@@ -13,7 +13,7 @@ package org.mafinlib.cashflow;
 
 import java.util.List;
 
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 import org.mafinlib.patterns.Observable;
 import org.mafinlib.patterns.ObservableInterface;
 import org.mafinlib.patterns.ObserverInterface;

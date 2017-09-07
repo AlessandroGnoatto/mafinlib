@@ -18,7 +18,7 @@ import java.util.Locale;
 import java.util.Calendar;
 
 import org.mafinlib.MFL;
-import org.mafinlib.exception.LibraryException;
+import org.mafinlib.library.exceptions.LibraryException;
 import org.mafinlib.patterns.Observable;
 import org.mafinlib.patterns.ObservableInterface;
 import org.mafinlib.patterns.ObserverInterface;

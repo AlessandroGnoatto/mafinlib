@@ -9,7 +9,7 @@
  * When applicable, the original copyright notice of the libraries above follows this notice.
  * 
  */
-package org.mafinlib.exception;
+package org.mafinlib.library.exceptions;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;

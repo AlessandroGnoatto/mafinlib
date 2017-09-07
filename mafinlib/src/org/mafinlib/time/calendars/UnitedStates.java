@@ -11,9 +11,9 @@
  */
 package org.mafinlib.time.calendars;
 
-import org.mafinlib.exception.LibraryException;
 import org.mafinlib.time.Month;
 import org.mafinlib.time.Weekday;
+import org.mafinlib.library.exceptions.LibraryException;
 import org.mafinlib.time.Calendar;
 import org.mafinlib.time.Date;
 

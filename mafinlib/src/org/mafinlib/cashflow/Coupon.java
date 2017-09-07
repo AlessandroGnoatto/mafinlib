@@ -26,51 +26,95 @@ import org.mafinlib.time.DayCounter;
  * This is why the most general implementation of Coupon requires 4 input dates. In most cases
  * the last two inputs will be null dates.
  * 
+ * This class implements part of the CashFlow interface but it is
+ * still abstract and provides derived classes with methods for
+ * accrual period calculations.
+ * 
  * @author Alessandro Gnoatto
  *
  */
 public abstract class Coupon extends Cashflow{
 	
-	protected double nominal;
 	protected Date paymentDate;
+	protected double nominal;
 	protected Date accrualStartDate;
 	protected Date accrualEndDate;
 	protected Date refPeriodStart;
 	protected Date refPeriodEnd;
+	protected Date exCouponDate;
+	protected double accrualPeriod;
 	
+	//Abstract methods
+	
+	//accrued rate
 	public abstract double rate();
 	
+	// day counter for accrual calculation
 	public abstract DayCounter dayCounter();
 	
+	//accrued amount at the given date
 	public abstract double accruedAmount(final Date date);
 	
-	public Coupon(final double nominal,
-					final Date paymentDate,
-					final Date accrualStartDate,
-					final Date accrualEndDate){
-		this(nominal,paymentDate,accrualStartDate,accrualEndDate, new Date(), new Date());
+	
+	//Constructors
+	
+	/**
+	 * 
+	 * @param paymentDate
+	 * @param nominal
+	 * @param accrualStartDate
+	 * @param accrualEndDate
+	 */
+	public Coupon(final Date paymentDate,
+				  final double nominal,
+				  final Date accrualStartDate,
+				  final Date accrualEndDate){
+		
+		this(paymentDate,nominal,accrualStartDate,accrualEndDate, new Date(), new Date(), new Date());
 	}
 	
-	public Coupon(final double nominal, 
-					final Date paymentDate, 
-					final Date accrualStartDate, 
-					final Date accrualEndDate, 
-					final Date refPeriodStart,
-					final Date refPeriodEnd) {
-		this.nominal = nominal;
+	/**
+	 * 
+	 * @param paymentDate
+	 * @param nominal
+	 * @param accrualStartDate
+	 * @param accrualEndDate
+	 * @param refPeriodStart
+	 * @param refPeriodEnd
+	 * @param exCouponDate
+	 */
+	public Coupon(final Date paymentDate,
+				  final double nominal,  
+				  final Date accrualStartDate, 
+				  final Date accrualEndDate, 
+				  final Date refPeriodStart,
+				  final Date refPeriodEnd,
+				  final Date exCouponDate) {
+		
 		this.paymentDate = paymentDate;
+		this.nominal = nominal;
 		this.accrualStartDate = accrualStartDate;
 		this.accrualEndDate = accrualEndDate;
 		this.refPeriodStart = refPeriodStart;
 		this.refPeriodEnd = refPeriodEnd;
+		this.exCouponDate = exCouponDate;
+		this.accrualPeriod = Double.NaN;
+		
+		if(refPeriodStart.eq(new Date()))
+			this.refPeriodStart =this.accrualStartDate;
+		
+		if(refPeriodEnd.eq(new Date()))
+			this.refPeriodEnd = this.accrualEndDate;
 	}
 	
+	//Getters
+	
+	/**
+	 * Returns the nominal amount.
+	 * @return the nominal amount.
+	 */
 	public double nominal(){
 		return this.nominal;
-	}
-	
-	public Date paymentDate(){
-		return this.paymentDate;
 	}
 	
 	/**
@@ -110,7 +154,10 @@ public abstract class Coupon extends Cashflow{
 	 * @return the accrual period as fraction of year
 	 */
 	public double accrualPeriod(){
-		return dayCounter().yearFraction(accrualStartDate, accrualEndDate,refPeriodStart,refPeriodEnd);
+		if(this.accrualPeriod == Double.NaN)
+			this.accrualPeriod = dayCounter().yearFraction(accrualStartDate, accrualEndDate,refPeriodStart,refPeriodEnd);
+		
+		return this.accrualPeriod;
 	}
 	
 	/**
@@ -139,6 +186,7 @@ public abstract class Coupon extends Cashflow{
 			return dayCounter().dayCount(accrualStartDate, dd);
 		}
 	}
+	
 	
 	//Implements Event
 	@Override
