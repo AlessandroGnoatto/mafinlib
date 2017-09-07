@@ -130,7 +130,6 @@ public class Settings {
     
 	//Begin thread safe Singleton pattern implementation
 	private static Settings instance = null;
-	private static Object mutex = new Object();
 
     
 	private Settings(){
@@ -138,13 +137,9 @@ public class Settings {
 		this.enforcesTodaysHistoricFixings = false;
 	}
 	
-	public static Settings instance(){
+	public static synchronized Settings instance(){
 		if(instance == null){
-			synchronized (mutex){
-				if(instance==null){
-					instance = new Settings();
-				}
-			}
+			instance = new Settings();
 		}
 		return instance;
 	}
