@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.mafinlib.TimeSeries;
-import org.mafinlib.patterns.Observable;
 import org.mafinlib.patterns.ObservableInterface;
+import org.mafinlib.patterns.ObservableValue;
 
 public class IndexManager {
 	
