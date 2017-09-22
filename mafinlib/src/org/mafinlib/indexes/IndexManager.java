@@ -27,19 +27,19 @@ public class IndexManager {
 		return instance;
 	}
     
-    public boolean hasHistory(final String name){
+    public boolean hasHistory(String name){
     	return (data.get(name).firstKey()).eq(data.get(name).lastKey());
     }
     
-	public TimeSeries<Double> getHistory(final String name) {
+	public TimeSeries<Double> getHistory(String name) {
 		return data.get(name);
 	}
 
-	public void setHistory(final String name, final TimeSeries<Double> history) {
+	public void setHistory(String name, TimeSeries<Double> history) {
 		data.put(name, history);
 	}
 	
-	public ObservableInterface notifier(final String name) {
+	public ObservableInterface notifier(String name) {
 	    TimeSeries<Double> value = data.get(name);
 		if (value == null){
 			value = new TimeSeries<Double>(Double.class);
@@ -48,7 +48,7 @@ public class IndexManager {
 		return new ObservableValue<TimeSeries<Double>>(value);
 	}
 	
-	public void clearHistory(final String name) {
+	public void clearHistory(String name) {
 		data.remove(name);
 	}
 
